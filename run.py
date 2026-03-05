@@ -1,4 +1,4 @@
-import rng.vitals as c
+import rng.pc_character as c
 
 keys = ['Race:','Gender:','Alignment:','Age:','Height:','Weight:','Stats:\tMethod I']
 values = []
@@ -8,7 +8,7 @@ char = dict(zip(keys,values))
 for key, value in char.items():
     print(f"{key}\n {value}")
 
-import tables.abl_tbl as tbl
+import tables.ability_score_tables as tbl
 
 # str_tbl = tbl.str_tbl(stats[0])
 # dex_tbl = tbl.dex_tbl(stats[1])
