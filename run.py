@@ -1,4 +1,4 @@
-import RNG.vitals as c
+import rng.vitals as c
 
 keys = ['Race:','Gender:','Alignment:','Age:','Height:','Weight:','Stats:\tMethod I']
 values = []
