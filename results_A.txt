@@ -1,0 +1,216 @@
+data/campaign
+├── SeedA
+│   ├── 1676046.txt
+│   ├── Set.1-Large City
+│   │   ├── Set.1-Large City_Init.xlsx
+│   │   ├── Set.1-Large City_Prime.xlsx
+│   │   └── Set.1-Large City_Summary.xlsx
+│   ├── Set.2-Large City
+│   │   ├── Heroes
+│   │   │   ├── HERO_Half-Elf_Set.2-Large City_Row-5587.txt
+│   │   │   └── HERO_Half-Elf_Set.2-Large City_Row-9121.txt
+│   │   ├── Set.2-Large City_Init.xlsx
+│   │   ├── Set.2-Large City_Prime.xlsx
+│   │   └── Set.2-Large City_Summary.xlsx
+│   ├── Set.3-Small City
+│   │   ├── Set.3-Small City_Init.xlsx
+│   │   ├── Set.3-Small City_Prime.xlsx
+│   │   └── Set.3-Small City_Summary.xlsx
+│   ├── Set.4-Thorp
+│   │   ├── Set.4-Thorp_Init.xlsx
+│   │   ├── Set.4-Thorp_Prime.xlsx
+│   │   └── Set.4-Thorp_Summary.xlsx
+│   ├── Set.5-Hamlet
+│   │   ├── Set.5-Hamlet_Init.xlsx
+│   │   ├── Set.5-Hamlet_Prime.xlsx
+│   │   └── Set.5-Hamlet_Summary.xlsx
+│   ├── Set.6-Hamlet
+│   │   ├── Set.6-Hamlet_Init.xlsx
+│   │   ├── Set.6-Hamlet_Prime.xlsx
+│   │   └── Set.6-Hamlet_Summary.xlsx
+│   ├── Set.7-Large Town
+│   │   ├── Set.7-Large Town_Init.xlsx
+│   │   ├── Set.7-Large Town_Prime.xlsx
+│   │   └── Set.7-Large Town_Summary.xlsx
+│   └── npc_population
+│       ├── SeedA_Init.xlsx
+│       ├── SeedA_Prime.xlsx
+│       └── SeedA_Summary.xlsx
+├── SeedB
+│   ├── 8354360.txt
+│   ├── Set.1-Hamlet
+│   │   ├── Set.1-Hamlet_Init.xlsx
+│   │   ├── Set.1-Hamlet_Prime.xlsx
+│   │   └── Set.1-Hamlet_Summary.xlsx
+│   ├── Set.10-Hamlet
+│   │   ├── Set.10-Hamlet_Init.xlsx
+│   │   ├── Set.10-Hamlet_Prime.xlsx
+│   │   └── Set.10-Hamlet_Summary.xlsx
+│   ├── Set.11-Thorp
+│   │   ├── Set.11-Thorp_Init.xlsx
+│   │   ├── Set.11-Thorp_Prime.xlsx
+│   │   └── Set.11-Thorp_Summary.xlsx
+│   ├── Set.2-Megalopolis
+│   │   ├── Heroes
+│   │   │   ├── HERO_Dwarf_Set.2-Megalopolis_Row-37976.txt
+│   │   │   ├── HERO_Dwarf_Set.2-Megalopolis_Row-6712.txt
+│   │   │   ├── HERO_Elf_Set.2-Megalopolis_Row-30038.txt
+│   │   │   ├── HERO_Gnome_Set.2-Megalopolis_Row-45518.txt
+│   │   │   └── HERO_Half-Elf_Set.2-Megalopolis_Row-39680.txt
+│   │   ├── Set.2-Megalopolis_Init.xlsx
+│   │   ├── Set.2-Megalopolis_Prime.xlsx
+│   │   └── Set.2-Megalopolis_Summary.xlsx
+│   ├── Set.3-Large Town
+│   │   ├── Set.3-Large Town_Init.xlsx
+│   │   ├── Set.3-Large Town_Prime.xlsx
+│   │   └── Set.3-Large Town_Summary.xlsx
+│   ├── Set.4-Thorp
+│   │   ├── Set.4-Thorp_Init.xlsx
+│   │   ├── Set.4-Thorp_Prime.xlsx
+│   │   └── Set.4-Thorp_Summary.xlsx
+│   ├── Set.5-Village
+│   │   ├── Set.5-Village_Init.xlsx
+│   │   ├── Set.5-Village_Prime.xlsx
+│   │   └── Set.5-Village_Summary.xlsx
+│   ├── Set.6-Hamlet
+│   │   ├── Set.6-Hamlet_Init.xlsx
+│   │   ├── Set.6-Hamlet_Prime.xlsx
+│   │   └── Set.6-Hamlet_Summary.xlsx
+│   ├── Set.7-Hamlet
+│   │   ├── Set.7-Hamlet_Init.xlsx
+│   │   ├── Set.7-Hamlet_Prime.xlsx
+│   │   └── Set.7-Hamlet_Summary.xlsx
+│   ├── Set.8-Large Town
+│   │   ├── Set.8-Large Town_Init.xlsx
+│   │   ├── Set.8-Large Town_Prime.xlsx
+│   │   └── Set.8-Large Town_Summary.xlsx
+│   ├── Set.9-Hamlet
+│   │   ├── Set.9-Hamlet_Init.xlsx
+│   │   ├── Set.9-Hamlet_Prime.xlsx
+│   │   └── Set.9-Hamlet_Summary.xlsx
+│   └── npc_population
+│       ├── SeedB_Init.xlsx
+│       ├── SeedB_Prime.xlsx
+│       └── SeedB_Summary.xlsx
+├── SeedC
+│   ├── 3601732.txt
+│   ├── Set.1-Small Town
+│   │   ├── Set.1-Small Town_Init.xlsx
+│   │   ├── Set.1-Small Town_Prime.xlsx
+│   │   └── Set.1-Small Town_Summary.xlsx
+│   ├── Set.10-Thorp
+│   │   ├── Set.10-Thorp_Init.xlsx
+│   │   ├── Set.10-Thorp_Prime.xlsx
+│   │   └── Set.10-Thorp_Summary.xlsx
+│   ├── Set.11-Thorp
+│   │   ├── Set.11-Thorp_Init.xlsx
+│   │   ├── Set.11-Thorp_Prime.xlsx
+│   │   └── Set.11-Thorp_Summary.xlsx
+│   ├── Set.12-Hamlet
+│   │   ├── Set.12-Hamlet_Init.xlsx
+│   │   ├── Set.12-Hamlet_Prime.xlsx
+│   │   └── Set.12-Hamlet_Summary.xlsx
+│   ├── Set.13-Thorp
+│   │   ├── Set.13-Thorp_Init.xlsx
+│   │   ├── Set.13-Thorp_Prime.xlsx
+│   │   └── Set.13-Thorp_Summary.xlsx
+│   ├── Set.2-Large Town
+│   │   ├── Set.2-Large Town_Init.xlsx
+│   │   ├── Set.2-Large Town_Prime.xlsx
+│   │   └── Set.2-Large Town_Summary.xlsx
+│   ├── Set.3-Large Town
+│   │   ├── Set.3-Large Town_Init.xlsx
+│   │   ├── Set.3-Large Town_Prime.xlsx
+│   │   └── Set.3-Large Town_Summary.xlsx
+│   ├── Set.4-Small Town
+│   │   ├── Set.4-Small Town_Init.xlsx
+│   │   ├── Set.4-Small Town_Prime.xlsx
+│   │   └── Set.4-Small Town_Summary.xlsx
+│   ├── Set.5-Small City
+│   │   ├── Set.5-Small City_Init.xlsx
+│   │   ├── Set.5-Small City_Prime.xlsx
+│   │   └── Set.5-Small City_Summary.xlsx
+│   ├── Set.6-Small City
+│   │   ├── Set.6-Small City_Init.xlsx
+│   │   ├── Set.6-Small City_Prime.xlsx
+│   │   └── Set.6-Small City_Summary.xlsx
+│   ├── Set.7-Large City
+│   │   ├── Set.7-Large City_Init.xlsx
+│   │   ├── Set.7-Large City_Prime.xlsx
+│   │   └── Set.7-Large City_Summary.xlsx
+│   ├── Set.8-Small City
+│   │   ├── Set.8-Small City_Init.xlsx
+│   │   ├── Set.8-Small City_Prime.xlsx
+│   │   └── Set.8-Small City_Summary.xlsx
+│   ├── Set.9-Village
+│   │   ├── Set.9-Village_Init.xlsx
+│   │   ├── Set.9-Village_Prime.xlsx
+│   │   └── Set.9-Village_Summary.xlsx
+│   └── npc_population
+│       ├── SeedC_Init.xlsx
+│       ├── SeedC_Prime.xlsx
+│       └── SeedC_Summary.xlsx
+├── SeedC_Fix
+│   ├── 3601732.txt
+│   ├── Set.1-Small Town
+│   │   ├── Set.1-Small Town_Init.xlsx
+│   │   ├── Set.1-Small Town_Prime.xlsx
+│   │   └── Set.1-Small Town_Summary.xlsx
+│   ├── Set.10-Thorp
+│   │   ├── Set.10-Thorp_Init.xlsx
+│   │   ├── Set.10-Thorp_Prime.xlsx
+│   │   └── Set.10-Thorp_Summary.xlsx
+│   ├── Set.11-Thorp
+│   │   ├── Set.11-Thorp_Init.xlsx
+│   │   ├── Set.11-Thorp_Prime.xlsx
+│   │   └── Set.11-Thorp_Summary.xlsx
+│   ├── Set.12-Hamlet
+│   │   ├── Set.12-Hamlet_Init.xlsx
+│   │   ├── Set.12-Hamlet_Prime.xlsx
+│   │   └── Set.12-Hamlet_Summary.xlsx
+│   ├── Set.13-Thorp
+│   │   ├── Set.13-Thorp_Init.xlsx
+│   │   ├── Set.13-Thorp_Prime.xlsx
+│   │   └── Set.13-Thorp_Summary.xlsx
+│   ├── Set.2-Large Town
+│   │   ├── Set.2-Large Town_Init.xlsx
+│   │   ├── Set.2-Large Town_Prime.xlsx
+│   │   └── Set.2-Large Town_Summary.xlsx
+│   ├── Set.3-Large Town
+│   │   ├── Set.3-Large Town_Init.xlsx
+│   │   ├── Set.3-Large Town_Prime.xlsx
+│   │   └── Set.3-Large Town_Summary.xlsx
+│   ├── Set.4-Small Town
+│   │   ├── Set.4-Small Town_Init.xlsx
+│   │   ├── Set.4-Small Town_Prime.xlsx
+│   │   └── Set.4-Small Town_Summary.xlsx
+│   ├── Set.5-Small City
+│   │   ├── Set.5-Small City_Init.xlsx
+│   │   ├── Set.5-Small City_Prime.xlsx
+│   │   └── Set.5-Small City_Summary.xlsx
+│   ├── Set.6-Small City
+│   │   ├── Set.6-Small City_Init.xlsx
+│   │   ├── Set.6-Small City_Prime.xlsx
+│   │   └── Set.6-Small City_Summary.xlsx
+│   ├── Set.7-Large City
+│   │   ├── Set.7-Large City_Init.xlsx
+│   │   ├── Set.7-Large City_Prime.xlsx
+│   │   └── Set.7-Large City_Summary.xlsx
+│   ├── Set.8-Small City
+│   │   ├── Set.8-Small City_Init.xlsx
+│   │   ├── Set.8-Small City_Prime.xlsx
+│   │   └── Set.8-Small City_Summary.xlsx
+│   ├── Set.9-Village
+│   │   ├── Set.9-Village_Init.xlsx
+│   │   ├── Set.9-Village_Prime.xlsx
+│   │   └── Set.9-Village_Summary.xlsx
+│   └── npc_population
+│       ├── SeedC_Fix_Init.xlsx
+│       ├── SeedC_Fix_Prime.xlsx
+│       └── SeedC_Fix_Summary.xlsx
+├── __pycache__
+│   ├── tally_npc.cpython-313.pyc
+│   └── tally_pop.cpython-313.pyc
+└── tally_npc.py
+
+56 directories, 158 files

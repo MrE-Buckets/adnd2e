@@ -1,30 +1,23 @@
 import os
-import random
 import pandas as pd
-from data.campaign.tally_npc import export_npc_pop
+from data.campaign.tally_npc import export_npc_pop, apply_npc_styling
 
-#######################################################################
 def settlement_worker(args):
     """Unpacks arguments for the multi-core pool."""
     df, campaign_name, settlement_name, low, high, path = args
     return create_settlement(df, campaign_name, settlement_name, low, high, path)
-#######################################################################
 
 def create_settlement(df, campaign_name, settlement_name, low, high, kingdom_prime_path):
-    """Plucks NPCs, triggers Tally, then performs a precision pass and blanking for Special Characters."""
-    # Determine size and drop empty rows
-    pop_size = random.randint(low, high)
-    valid_df = df.dropna(how='all')
+    """Takes pre-plucked NPCs from SQLite and extracts Heroes."""
     
-    if len(valid_df) < pop_size:
-        pop_size = len(valid_df)
+    # Population size is now simply the length of the handed-off DataFrame
+    settlement_df = df 
+    pop_size = len(settlement_df)
 
-    # Sample without replacement
-    settlement_df = valid_df.sample(n=pop_size)
     settlement_folder = os.path.join("data/campaign", campaign_name, settlement_name)
     os.makedirs(settlement_folder, exist_ok=True)
 
-    # Plugin Call: Build the settlement summary first
+    # 1. Export the Settlement Excel Files
     export_npc_pop(
         lists={settlement_name: settlement_df.values.tolist()},
         gen_name=settlement_name, 
@@ -32,52 +25,38 @@ def create_settlement(df, campaign_name, settlement_name, low, high, kingdom_pri
         folder_path=settlement_folder
     )
 
-    #######################################################################
-    # POST-TALLY PRECISION PASS & BLANKING
-    # Reads the final Prime file, generates sheets, then surgically blanks them
-    #######################################################################
+    # 2. Hero Extraction
     prime_file = os.path.join(settlement_folder, f"{settlement_name}_Prime.xlsx")
     
     if os.path.exists(prime_file):
-        # Load the newly created Excel file
-        final_df = pd.read_excel(prime_file, sheet_name="Prime")
+        final_df = pd.read_excel(prime_file, sheet_name=0)
         indices_to_blank = []
-        
-        for idx, row in final_df.iterrows():
-            try:
-                # Standardized extraction from Column H (Power)
-                pwr_val = int(str(row.iloc[7]).split()[0])
-            except (ValueError, IndexError):
-                pwr_val = 0
 
-            if pwr_val >= 78:
-                tier = "Gods" if pwr_val >= 92 else "Heroes"
-                tier_folder = os.path.join(settlement_folder, tier)
-                os.makedirs(tier_folder, exist_ok=True)
+        for idx, row in final_df.iterrows():
+            if str(row['Tier']).strip() == "Hero":
+                hero_folder = os.path.join(settlement_folder, "Heroes")
+                os.makedirs(hero_folder, exist_ok=True)
                 
-                # Naming Convention: {race}_{Settlement Name}_{Row}_{power}.txt
                 clean_race = str(row.iloc[0]).strip().rstrip(':')
-                # idx + 2: idx is 0-based; Excel is 1-based + 1 for header row
-                row_num = idx + 2 
-                filename = f"{clean_race}_{settlement_name}_{pwr_val}_Row-{row_num}.txt"
-                sheet_path = os.path.join(tier_folder, filename)
+                filename_string = f"HERO_{clean_race}_{settlement_name}_Row-{idx+2}.txt"
+                sheet_path = os.path.join(hero_folder, filename_string)
                 
                 with open(sheet_path, "w") as f:
-                    f.write(f"--- {tier.upper()} CHARACTER SHEET ---\n\n")
+                    f.write(f"--- HERO CHARACTER SHEET ---\n")
+                    f.write(f"Settlement: {settlement_name}\n")
+                    f.write(f"Tier Level (Avg): {row['Tier lvl.']}\n")
+                    f.write("-" * 30 + "\n")
                     for col_name, value in row.items():
                         f.write(f"{col_name}: {value}\n")
                 
-                # Mark this index for blanking from the Excel file
                 indices_to_blank.append(idx)
-        
-        # Surgical Blanking from the Settlement Prime File
+
+        # 3. Local Blanking
         if indices_to_blank:
             final_df.loc[indices_to_blank, :] = None
-            with pd.ExcelWriter(prime_file, engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
-                final_df.to_excel(writer, sheet_name="Prime", index=False)
-    #######################################################################
+            with pd.ExcelWriter(prime_file, engine='xlsxwriter') as writer:
+                final_df.to_excel(writer, sheet_name=settlement_name, index=False)
+                apply_npc_styling(writer, settlement_name, final_df)
 
-    print(f"Relocating {pop_size} NPCs to {settlement_name}...")
-    # Surgical blanking in the main kingdom pool
-    df.loc[settlement_df.index, :] = None 
-    return df
+    print(f"Settled {pop_size} NPCs for {settlement_name}. Heroes moved to sub-folder.")
+    return settlement_df
