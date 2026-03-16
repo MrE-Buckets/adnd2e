@@ -1,0 +1,8 @@
+Race,Sex,Age,Weight,Height,Alignment,Stats,Tier lvl.,Tier,Death
+Dwarf: ,Male,62,153,47,Neutral Evil,"[ 11, 10, 14, 15, 12, 11 ]",12.17,Elite,330
+Gnome: ,Female,78,84,39,Chaotic Good,"[ 10, 13, 17, 16, 09, 09 ]",12.33,Elite,295
+Dwarf: ,Male,54,154,44,Chaotic Evil,"[ 06, 09, 10, 11, 09, 09 ]",9.0,Commoner,317
+Dwarf: ,Male,68,151,49,Lawful Neutral,"[ 09, 10, 13, 06, 08, 10 ]",9.33,Commoner,312
+Dwarf: ,Female,64,124,51,Neutral Good,"[ 09, 11, 10, 08, 08, 12 ]",9.67,Commoner,370
+Dwarf: ,Female,80,122,48,Lawful Evil,"[ 06, 13, 08, 04, 11, 08 ]",8.33,Commoner,364
+Dwarf: ,Male,70,162,44,True Neutral,"[ 07, 06, 14, 05, 10, 08 ]",8.33,Commoner,366

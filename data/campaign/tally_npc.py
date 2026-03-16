@@ -2,6 +2,32 @@ import pandas as pd
 import openpyxl
 import os
 
+def write_summary(df_main, gen_name, folder_path):
+    """
+    Stand-alone function to generate the Master Summary 
+    using a template and a consolidated DataFrame.
+    """
+    summary_template_path = "data/_master_summary.xlsx"
+    if os.path.exists(summary_template_path):
+        wb = openpyxl.load_workbook(summary_template_path)
+        ws_sum = wb.active
+        ws_sum["A1"].value = gen_name
+        
+        # Use the corrected exact-match matrix
+        current_matrix = calculate_internal_matrix(df_main)
+        
+        row_map = {"Commoner": 3, "Elite": 4, "Adventurer": 5, "Hero": 6}
+        races = ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"]
+        
+        for p_key, target_row in row_map.items():
+            for i, r_key in enumerate(races):
+                count_col = 2 + (i * 2) # Matches the B, D, F, H, J, L structure
+                ws_sum.cell(row=target_row, column=count_col).value = current_matrix[p_key][r_key]
+        
+        summary_name = os.path.join(folder_path, f"{gen_name}_Summary.xlsx")
+        wb.save(summary_name)
+        print(f"Master Summary generated at: {summary_name}")
+
 def apply_npc_styling(writer, sheet_name, df):
     """Meticulous Formatting for the 10-column structure."""
     workbook = writer.book
@@ -54,23 +80,24 @@ def export_npc_pop(lists, gen_name, matrix, folder_path=None):
                 df_main.to_excel(writer, sheet_name=gen_name, index=False)
                 apply_npc_styling(writer, gen_name, df_main)
 
+    write_summary(df_main, gen_name, folder_path)
     # --- SUMMARY GENERATION ---
-    summary_template_path = "data/_master_summary.xlsx"
-    if os.path.exists(summary_template_path):
-        wb = openpyxl.load_workbook(summary_template_path)
-        ws_sum = wb.active
-        ws_sum["A1"].value = gen_name
+    # summary_template_path = "data/_master_summary.xlsx"
+    # if os.path.exists(summary_template_path):
+    #     wb = openpyxl.load_workbook(summary_template_path)
+    #     ws_sum = wb.active
+    #     ws_sum["A1"].value = gen_name
         
-        # Use the corrected exact-match matrix
-        current_matrix = calculate_internal_matrix(df_main)
+    #     # Use the corrected exact-match matrix
+    #     current_matrix = calculate_internal_matrix(df_main)
         
-        row_map = {"Commoner": 3, "Elite": 4, "Adventurer": 5, "Hero": 6}
-        races = ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"]
+    #     row_map = {"Commoner": 3, "Elite": 4, "Adventurer": 5, "Hero": 6}
+    #     races = ["Dwarf", "Elf", "Gnome", "Half-Elf", "Halfling", "Human"]
         
-        for p_key, target_row in row_map.items():
-            for i, r_key in enumerate(races):
-                count_col = 2 + (i * 2)
-                ws_sum.cell(row=target_row, column=count_col).value = current_matrix[p_key][r_key]
+    #     for p_key, target_row in row_map.items():
+    #         for i, r_key in enumerate(races):
+    #             count_col = 2 + (i * 2)
+    #             ws_sum.cell(row=target_row, column=count_col).value = current_matrix[p_key][r_key]
         
-        summary_name = os.path.join(folder_path, f"{gen_name}_Summary.xlsx")
-        wb.save(summary_name)
+    #     summary_name = os.path.join(folder_path, f"{gen_name}_Summary.xlsx")
+    #     wb.save(summary_name)

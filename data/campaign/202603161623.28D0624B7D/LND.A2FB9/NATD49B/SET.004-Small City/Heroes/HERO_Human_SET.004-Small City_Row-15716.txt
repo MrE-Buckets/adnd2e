@@ -1,0 +1,14 @@
+--- HERO CHARACTER SHEET ---
+Settlement: SET.004-Small City | Seed: 202603161623.28D0624B7D
+Tier Level (Avg): 15.5
+------------------------------
+Race: Human: 
+Sex: Female
+Age: 19
+Weight: 116
+Height: 71
+Alignment: Lawful Neutral
+Stats: [ 18, 16, 16, 14, 16, 13 ]
+Tier lvl.: 15.5
+Tier: Hero
+Death: 101

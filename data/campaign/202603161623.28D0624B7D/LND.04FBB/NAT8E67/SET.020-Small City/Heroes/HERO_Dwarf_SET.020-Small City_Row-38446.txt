@@ -1,0 +1,14 @@
+--- HERO CHARACTER SHEET ---
+Settlement: SET.020-Small City | Seed: 202603161623.28D0624B7D
+Tier Level (Avg): 15.33
+------------------------------
+Race: Dwarf: 
+Sex: Male
+Age: 58
+Weight: 149
+Height: 45
+Alignment: Chaotic Neutral
+Stats: [ 13, 17, 15, 17, 14, 16 ]
+Tier lvl.: 15.33
+Tier: Hero
+Death: 409

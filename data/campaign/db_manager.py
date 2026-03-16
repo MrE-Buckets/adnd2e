@@ -4,7 +4,7 @@ import pandas as pd
 
 def get_db_connection(gen_name):
     """Establishes a connection to the campaign's specific SQLite database."""
-    db_path = f"data/campaign/{gen_name}/{gen_name}_Globe.db"
+    db_path = f"data/campaign/{gen_name}/{gen_name}_global.db"
     # Ensure directory exists before connecting
     os.makedirs(os.path.dirname(db_path), exist_ok=True)
     return sqlite3.connect(db_path)
@@ -31,6 +31,9 @@ def initialize_db(gen_name):
             Death TEXT
         )
     ''')
+    ################
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_id ON world_data(id)')
+    ################
     conn.commit()
     conn.close()
 
@@ -56,12 +59,12 @@ def save_population_to_db(gen_name, df):
 def pluck_settlement_pop(gen_name, pop_size):
     """
     Randomly selects NPCs for a settlement and deletes them from the global pool.
-    This performs the 'Surgical Blanking' inside the database.
+    Uses chunked deletion to avoid 'too many SQL variables' error.
     """
     conn = get_db_connection(gen_name)
     cursor = conn.cursor()
     
-    # 1. Randomly select the IDs and data for the requested population size
+    # 1. Randomly select the IDs and data
     cursor.execute('''
         SELECT * FROM world_data 
         ORDER BY RANDOM() 
@@ -69,30 +72,31 @@ def pluck_settlement_pop(gen_name, pop_size):
     ''', (pop_size,))
     
     rows = cursor.fetchall()
-    
-    # Get column names from the cursor description
     columns = [description[0] for description in cursor.description]
     
     if not rows:
         conn.close()
         return None
 
-    # 2. Extract the IDs so we can delete them (Blanking)
+    # 2. Extract IDs for Surgical Blanking
     ids_to_remove = [row[0] for row in rows]
     
-    # 3. Perform the Surgical Blanking
-    cursor.execute(f'''
-        DELETE FROM world_data 
-        WHERE id IN ({','.join(['?'] * len(ids_to_remove))})
-    ''', ids_to_remove)
+    # 3. Perform Chunked Surgical Blanking (Fix for 'too many SQL variables')
+    # We use a chunk size of 999, well below the ~32k SQLite limit.
+    chunk_size = 999
+    for i in range(0, len(ids_to_remove), chunk_size):
+        chunk = ids_to_remove[i : i + chunk_size]
+        cursor.execute(f'''
+            DELETE FROM world_data 
+            WHERE id IN ({','.join(['?'] * len(chunk))})
+        ''', chunk)
     
     conn.commit()
     conn.close()
     
-    # Return as a DataFrame, removing the internal 'id' column so roll_settlement is happy
+    # Return as a DataFrame, removing 'id' for compatibility
     df_out = pd.DataFrame(rows, columns=columns).drop(columns=['id'])
     
-    # Rename 'Tier_Lvl' back to 'Tier lvl.' so the Excel logic remains identical
     if 'Tier_Lvl' in df_out.columns:
         df_out = df_out.rename(columns={'Tier_Lvl': 'Tier lvl.'})
         
